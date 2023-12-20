@@ -1,0 +1,49 @@
+{
+  "name": "rentacar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "src/server.ts",
+    "lint-staged": "lint-staged",
+    "studio": "npx prisma studio",
+    "lint": "eslint --fix src/",
+    "prepare": "husky install"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "keywords": [],
+  "author": "Domingos Canhanga",
+  "license": "Apache-2.0",
+  "lint-staged": {
+    "*.md": [
+      "npx prettier --write"
+    ],
+    "*.{js,ts}": [
+      "npx eslint --fix"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "git-commit-msg-linter": "^5.0.6",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
