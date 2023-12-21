@@ -1,10 +1,16 @@
 import express from 'express';
 
-import { MESSAGE, PORT } from './config';
+import { routes } from './app/routes/index';
 
 const app = express();
 
-app.listen(PORT, () => {
+app.use(express.json());
+
+app.use(routes);
+
+const port = 3333;
+
+app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(MESSAGE);
+  console.log(` Server is 🚀 on port  http://localhost:${port}`);
 });
