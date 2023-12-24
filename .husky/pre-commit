@@ -1,5 +1,3 @@
 #!/usr/bin/env sh
-#!/bin/sh
-#!/bin/sh
 . "$(dirname -- "$0")/_/husky.sh"
-  npx lint-staged
+ yarn lint-staged

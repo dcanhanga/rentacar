@@ -1,73 +1,45 @@
 {
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-
-  "env": {
-    "es2021": true,
-    "node": true
-  },
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "eslint:recommended",
-    "plugin:promise/recommended",
-    "plugin:prettier/recommended"
-
-  ],
-
-  "plugins": ["@typescript-eslint","simple-import-sort", "promise",  "prettier"],
-  "rules": {
-    "camelcase": ["error", { "properties": "never" }],
-    "no-console": "warn",
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "interface",
-        "format": ["PascalCase"],
-        "custom": {
-          "regex": "^I[A-Z]",
-          "match": true
-        }
-      }
+    "env": {
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "standard-with-typescript",
+      "prettier",
+      "plugin:prettier/recommended"
     ],
-    "@typescript-eslint/explicit-function-return-type": "error",
-    "class-methods-use-this": "off",
-    "import/prefer-default-export": "off",
-    "no-shadow": "off",
-    "no-useless-constructor": "off",
-    "no-empty-function": "off",
-    "lines-between-class-members": "off",
-    "space-before-function-paren": "off",
-    "prefer-arrow-callback": [
-      "error",
-      { "allowNamedFunctions": true, "allowUnboundThis": true }
+    "plugins": [
+      "prettier"
     ],
-    "promise/always-return": "error",
-    "promise/no-return-wrap": "error",
-    "promise/param-names": "error",
-    "promise/catch-or-return": "error",
-    "promise/no-native": "off",
-    "promise/no-nesting": "warn",
-    "promise/no-promise-in-callback": "warn",
-    "promise/no-callback-in-promise": "warn",
-    "promise/avoid-new": "warn",
-    "promise/no-new-statics": "error",
-    "promise/no-return-in-finally": "warn",
-    "promise/valid-params": "warn",
-    "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
-  },
-  "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx", ".d.ts"],
-      "import/resolver": {
-        "typescript": {
-          "project": "./tsconfig.json"
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "no-console": "warn",
+      "@typescript-eslint/semi": "off",
+      "prettier/prettier": ["error", {
+        "semi": true,
+        "printWidth": 80,
+       "singleQuote": true,
+        "bracketSpacing": true,
+        "trailingComma": "all",
+       "arrowParens:": "avoid",
+       "endOfLine": "lf",
+        "proseWrap": "preserve"
         }
-      }
+      ],
+      "@typescript-eslint/naming-convention": [
+			  "error",
+			  {
+			    "selector": "interface",
+			    "format": ["PascalCase"],
+			    "custom": {
+			      "regex": "^I[A-Z]",
+			      "match": true
+			    }
+			  }
+			]
     }
   }
-
-}

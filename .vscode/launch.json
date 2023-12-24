@@ -5,15 +5,16 @@
   "version": "0.2.0",
   "configurations": [
     {
+
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/src/server.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
       "type": "node",
-      "request": "attach",
-      "name": "Iniciar o Programa",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
       "outFiles": [
-        "${workspaceFolder}/**/*.js"
+        "${workspaceFolder}/**/*.js",
+
       ]
     }
   ]
