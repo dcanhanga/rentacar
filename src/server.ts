@@ -4,7 +4,6 @@ const app = express();
 app.use(express.json());
 app.post('/courses', (request, response) => {
   console.log(request.body);
-  const { name } = request.body;
   return response.json({ name });
 });
 
