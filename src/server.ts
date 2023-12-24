@@ -1,10 +1,12 @@
 import express from 'express';
 
-const be = (a: number, b: number): number => {
-  return a + b;
-};
-be(1, 2);
 const app = express();
+app.use(express.json());
+app.post('/courses', (request, response) => {
+  console.log(request.body);
+  const { name } = request.body;
+  return response.json({ name });
+});
 
 const port = 3333;
 app.listen(port, () => {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "tsx --watch  src/server.ts",
+    "dev": "tsx --watch --inspect --no-warnings  src/server.ts",
     "lint-staged": "lint-staged",
     "studio": "npx prisma studio",
     "lint": "eslint src -- ext .ts -- fix",
@@ -44,7 +44,7 @@
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
     "prettier": "3.1.1",
-    "ts-node": "10.9.2",
+    "tsx": "4.7.0",
     "typescript": "5.3.3"
   }
 }
