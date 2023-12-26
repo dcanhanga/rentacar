@@ -1,45 +1,69 @@
 {
-    "env": {
-      "es2021": true,
-      "node": true
-    },
-    "extends": [
-      "standard-with-typescript",
-      "prettier",
-      "plugin:prettier/recommended"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module",
-      "project": "./tsconfig.json"
-    },
-    "rules": {
-      "no-console": "warn",
-      "@typescript-eslint/semi": "off",
-      "prettier/prettier": ["error", {
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "extends": ["@rocketseat/eslint-config/node"],
+  "plugins": ["import"],
+  "rules": {
+    "no-console": "warn",
+    "prettier/prettier": [
+      "error",
+      {
         "semi": true,
         "printWidth": 80,
-       "singleQuote": true,
+        "singleQuote": true,
         "bracketSpacing": true,
         "trailingComma": "all",
-       "arrowParens:": "avoid",
-       "endOfLine": "lf",
-        "proseWrap": "preserve"
+        "arrowParens": "avoid",
+        "endOfLine": "lf",
+        "proseWrap": "preserve",
+        "parser": "typescript"
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
         }
-      ],
-      "@typescript-eslint/naming-convention": [
-			  "error",
-			  {
-			    "selector": "interface",
-			    "format": ["PascalCase"],
-			    "custom": {
-			      "regex": "^I[A-Z]",
-			      "match": true
-			    }
-			  }
-			]
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "external",
+          "index",
+          "sibling",
+          "parent",
+          "internal",
+          "builtin"
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "interface",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": true
+            }
+          }
+        ]
+      }
     }
-  }
+  ]
+}

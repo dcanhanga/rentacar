@@ -1,12 +1,10 @@
 import express from 'express';
+import { router } from 'app/routes';
 
 const app = express();
-app.use(express.json());
-app.post('/courses', (request, response) => {
-  console.log(request.body);
-  return response.json({ name });
-});
 
+app.use(express.json());
+app.use(router);
 const port = 3333;
 app.listen(port, () => {
   // eslint-disable-next-line no-console
