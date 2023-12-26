@@ -6,7 +6,17 @@
   "extends": ["@rocketseat/eslint-config/node"],
   "plugins": ["import"],
   "rules": {
-    "no-console": "warn",
+    "camelcase": "off",
+
+"class-methods-use-this": "off",
+"no-shadow": "warn",
+"no-useless-constructor": "off",
+"no-empty-function": "off",
+"lines-between-class-members": "warn",
+"no-multiple-empty-lines": "error",
+"newline-after-var":"error",
+"no-duplicate-imports": "error",
+"prefer-destructuring":"warn",
     "prettier/prettier": [
       "error",
       {

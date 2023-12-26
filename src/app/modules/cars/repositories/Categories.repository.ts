@@ -1,9 +1,10 @@
 import { Category } from 'cars/model/Category';
-interface ICreateCategoryDTO {
-  name: string;
-  description: string;
-}
-class CategoriesRepository {
+
+import {
+  ICategoryRepository,
+  ICreateCategoryDTO,
+} from './ICategoriesRepository';
+class CategoriesRepository implements ICategoryRepository {
   categories: Category[];
   constructor() {
     this.categories = [];
@@ -11,6 +12,7 @@ class CategoriesRepository {
 
   create = ({ name, description }: ICreateCategoryDTO): void => {
     const category = new Category();
+
     Object.assign(category, { name, description, created_at: new Date() });
     this.categories.push(category);
   };
@@ -20,7 +22,7 @@ class CategoriesRepository {
   };
 
   findByName = (name: string): Category => {
-    return this.categories.find(category => (category.name = name));
+    return this.categories.find(category => category.name === name);
   };
 }
 export { CategoriesRepository };
