@@ -5,7 +5,7 @@ interface IRequest {
   description: string;
 }
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
   constructor(private readonly categoriesRepository: ICategoryRepository) {}
   execute = ({ description, name }: IRequest): void => {
     const categoryAlreadyExists = this.categoriesRepository.findByName(name);
@@ -16,4 +16,4 @@ class CreateCategoryService {
     this.categoriesRepository.create({ name, description });
   };
 }
-export { CreateCategoryService };
+export { CreateCategoryUseCase };

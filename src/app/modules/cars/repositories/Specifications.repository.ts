@@ -1,6 +1,6 @@
 import {
   type ICreateSpecificationDTO,
-  type ISpecificationRepository,
+  type ISpecificationRepository
 } from './ISpecificationsRepository';
 import { Specification } from '@cars/model/Specification';
 
