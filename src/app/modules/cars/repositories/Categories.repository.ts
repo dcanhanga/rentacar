@@ -1,11 +1,8 @@
-import { Category } from 'cars/model/Category';
+import { type ICategoryRepository, type ICreateCategoryDTO } from './ICategoriesRepository';
+import { Category } from '@cars/model/Category';
 
-import {
-  ICategoryRepository,
-  ICreateCategoryDTO,
-} from './ICategoriesRepository';
 class CategoriesRepository implements ICategoryRepository {
-  categories: Category[];
+  private readonly categories: Category[];
   constructor() {
     this.categories = [];
   }
@@ -17,12 +14,9 @@ class CategoriesRepository implements ICategoryRepository {
     this.categories.push(category);
   };
 
-  list = (): Category[] => {
-    return this.categories;
-  };
+  list = (): Category[] => this.categories;
 
-  findByName = (name: string): Category => {
-    return this.categories.find(category => category.name === name);
-  };
+  findByName = (name: string): Category | undefined =>
+    this.categories.find(category => category.name === name);
 }
 export { CategoriesRepository };

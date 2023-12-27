@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-class Category {
+class Specification {
   name!: string;
   description!: string;
   id?: string;
@@ -10,4 +10,4 @@ class Category {
     }
   }
 }
-export { Category };
+export { Specification };

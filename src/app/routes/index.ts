@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { carsRoutes } from 'cars/routes';
+
+import { carsRoutes } from '@cars/routes';
 
 const router = Router();
 

@@ -1,37 +1,46 @@
 {
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "standard-with-typescript",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier"
+  ],
   "parserOptions": {
-    "ecmaVersion": 2021,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "extends": ["@rocketseat/eslint-config/node"],
-  "plugins": ["import"],
   "rules": {
-    "camelcase": "off",
-
-"class-methods-use-this": "off",
-"no-shadow": "warn",
-"no-useless-constructor": "off",
-"no-empty-function": "off",
-"lines-between-class-members": "warn",
-"no-multiple-empty-lines": "error",
-"newline-after-var":"error",
-"no-duplicate-imports": "error",
-"prefer-destructuring":"warn",
-    "prettier/prettier": [
+    "@typescript-eslint/method-signature-style": ["error", "property"],
+    "no-console": "error",
+    "no-empty-function": "off",
+    "eqeqeq":"error",
+    "block-spacing":"error",
+    "lines-between-class-members": "error",
+    "@typescript-eslint/semi": ["error", "always"],
+    "prettier/prettier": ["error",{},{"usePrettierrc": true}
+    ],
+    "import/order": [
       "error",
       {
-        "semi": true,
-        "printWidth": 80,
-        "singleQuote": true,
-        "bracketSpacing": true,
-        "trailingComma": "all",
-        "arrowParens": "avoid",
-        "endOfLine": "lf",
-        "proseWrap": "preserve",
-        "parser": "typescript"
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "parent", "sibling", "index"]
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
     ],
     "@typescript-eslint/explicit-module-boundary-types": "error",
+    "@typescript-eslint/strict-boolean-expressions":"off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -42,19 +51,19 @@
           "match": true
         }
       }
-    ],
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "external",
-          "index",
-          "sibling",
-          "parent",
-          "internal",
-          "builtin"
-        ]
-      }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@src/*", "./src"],
+          ["@app", "./src/app"],
+          ["@module", "./src/app/modules/"],
+          ["@cars", "./src/app/modules/cars/"]
+        ],
+        "extensions": [".ts", ".tsx", ".js", ".jsx"]
+      }
+    }
   }
 }
