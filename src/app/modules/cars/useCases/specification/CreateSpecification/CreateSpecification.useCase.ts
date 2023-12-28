@@ -1,11 +1,11 @@
-import { type ISpecificationRepository } from '../repositories/ISpecificationsRepository';
+import { type ISpecificationRepository } from '@cars/repositories/implementations/ISpecificationsRepository';
 
 interface IRequest {
   name: string;
   description: string;
 }
 
-class CreateSpecificationService {
+class CreateSpecificationUseCase {
   constructor(private readonly specificationsRepository: ISpecificationRepository) {}
   execute({ description, name }: IRequest): void {
     const specificationAlReadyExits = this.specificationsRepository.findByName(name);
@@ -16,4 +16,5 @@ class CreateSpecificationService {
     this.specificationsRepository.create({ description, name });
   }
 }
-export { CreateSpecificationService };
+
+export { CreateSpecificationUseCase };

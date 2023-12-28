@@ -1,4 +1,7 @@
-import { type ICategoryRepository, type ICreateCategoryDTO } from './ICategoriesRepository';
+import {
+  type ICreateCategoryDTO,
+  type ICategoryRepository
+} from './implementations/ICategoriesRepository';
 import { Category } from '@cars/model/Category';
 
 class CategoriesRepository implements ICategoryRepository {
@@ -22,9 +25,10 @@ class CategoriesRepository implements ICategoryRepository {
     this.categories.push(category);
   };
 
-  list = (): Category[] => this.categories;
-
   findByName = (name: string): Category | undefined =>
     this.categories.find(category => category.name === name);
+
+  list = (): Category[] => this.categories;
 }
+
 export { CategoriesRepository };

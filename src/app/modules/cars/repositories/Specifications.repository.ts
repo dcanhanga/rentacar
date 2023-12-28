@@ -1,14 +1,23 @@
 import {
   type ICreateSpecificationDTO,
   type ISpecificationRepository
-} from './ISpecificationsRepository';
+} from './implementations/ISpecificationsRepository';
 import { Specification } from '@cars/model/Specification';
 
 class SpecificationsRepository implements ISpecificationRepository {
   private readonly specifications: Specification[];
-  constructor() {
+  private static INSTANCE: SpecificationsRepository;
+
+  private constructor() {
     this.specifications = [];
   }
+
+  public static getInstance = (): SpecificationsRepository => {
+    if (!SpecificationsRepository.INSTANCE) {
+      SpecificationsRepository.INSTANCE = new SpecificationsRepository();
+    }
+    return SpecificationsRepository.INSTANCE;
+  };
 
   create = ({ description, name }: ICreateSpecificationDTO): void => {
     const specification = new Specification();
