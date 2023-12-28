@@ -10,4 +10,5 @@ class Category {
     }
   }
 }
+
 export { Category };
