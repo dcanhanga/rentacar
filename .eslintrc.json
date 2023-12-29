@@ -8,9 +8,7 @@
     "prettier",
     "plugin:prettier/recommended"
   ],
-  "plugins": [
-    "prettier"
-  ],
+  "plugins": ["prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"

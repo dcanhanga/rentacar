@@ -6,9 +6,13 @@ class CreateCategoryController {
   constructor(private readonly createCategoryUseCase: CreateCategoryUseCase) {}
   handle = (request: Request, response: Response): Response => {
     const { name, description } = request.body;
-
-    this.createCategoryUseCase.execute({ description, name });
-    return response.status(201).send();
+    const categoryAlreadyExists = this.createCategoryUseCase.execute({ description, name });
+    if (!categoryAlreadyExists) {
+      return response.status(200).json({ message: `Categoria ${name}  cadastradas com sucesso.` });
+    }
+    return response.status(409).json({
+      message: `A categoria ${name} não foi cadastrada porque já existe no sistema.`
+    });
   };
 }
 
