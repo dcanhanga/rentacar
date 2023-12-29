@@ -56,6 +56,7 @@
       "alias": {
         "map": [
           ["@src/*", "./src"],
+          ["@docs", "./src/docs"],
           ["@app", "./src/app"],
           ["@module", "./src/app/modules/"],
           ["@cars", "./src/app/modules/cars/"]
