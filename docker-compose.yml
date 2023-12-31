@@ -1,10 +1,37 @@
 version: '2.3'
 
 services:
-  app:
+  rentacar_db:
+    image: postgres
+    container_name: database_db
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=rentacar
+      - POSTGRES_DB=rentacar
+    volumes:
+      - pgdata:/data/postgres
+
+
+  rentacar_app:
     build: .
-    container_name: rentacar
+    container_name: rentacar_app
+    restart: always
     ports:
       - 3033:3033
+      - 9229:9229
     volumes:
       - .:/usr/app
+    links:
+      - rentacar_db
+    depends_on:
+      - rentacar_db
+
+
+
+volumes:
+  pgdata:
+    driver: local
+

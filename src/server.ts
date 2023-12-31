@@ -3,6 +3,7 @@ import express from 'express';
 import { url, serve, setup } from './docs';
 import { router } from '@app/routes';
 
+import './app/database';
 const app = express();
 const port = 3033;
 app.use(express.json());
