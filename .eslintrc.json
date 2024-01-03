@@ -14,6 +14,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/method-signature-style": ["error", "property"],
     "no-console": "error",
     "no-empty-function": "off",
@@ -58,8 +59,8 @@
           ["@src/*", "./src"],
           ["@docs", "./src/docs"],
           ["@app", "./src/app"],
-          ["@module", "./src/app/modules/"],
-          ["@cars", "./src/app/modules/cars/"]
+          ["@modules", "./src/app/modules/"],
+          ["@utils", "./src/app/utils/"]
         ],
         "extensions": [".ts", ".tsx", ".js", ".jsx"]
       }
