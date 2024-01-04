@@ -1,8 +1,8 @@
-import { type ICategory } from '../../entities/Category';
 import {
   type ICategoriesRepository,
   type ICreateCategoriesDTO
 } from '../interfaces/ICategoriesRepository';
+import { type ICategory } from '@modules/cars/entities/Category';
 import { prisma } from '@utils/prisma';
 
 class PrismaCategoriesRepository implements ICategoriesRepository {
