@@ -1,17 +1,20 @@
 import { type Request, type Response } from 'express';
+import { container } from 'tsyringe';
 
-import { type ImportCategoryUseCase } from './ImportCategory.useCase';
+import { ImportCategoryUseCase } from '../../useCases/ImportCategory.useCase';
 
 class ImportCategoryController {
-  constructor(private readonly importCategoryUseCase: ImportCategoryUseCase) {}
-
   handle = async (request: Request, response: Response): Promise<Response> => {
     const { file } = request;
 
+    const importCategoryUseCase = container.resolve(ImportCategoryUseCase);
     if (!file) {
       return response.status(400).json({ message: 'Não podes enviar arquivo vazio' }).send();
     }
-    const categoriesAlreadyExists = await this.importCategoryUseCase.execute(file);
+    if (!file.originalname.endsWith('.csv')) {
+      return response.status(400).json({ message: 'O arquivo deve ser do tipo CSV' });
+    }
+    const categoriesAlreadyExists = await importCategoryUseCase.execute(file);
     if (categoriesAlreadyExists.length > 0) {
       const categoryNames = categoriesAlreadyExists.map(category => category.name).join(', ');
       const message =
@@ -25,4 +28,4 @@ class ImportCategoryController {
   };
 }
 
-export { ImportCategoryController };
+export const importCategoryController = new ImportCategoryController();
