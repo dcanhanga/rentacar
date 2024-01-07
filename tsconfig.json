@@ -9,11 +9,12 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"],
+      "@/*": ["src/*"],
       "@app/*" : ["src/app/*"],
       "@docs/*" : ["src/docs/*"],
       "@utils/*" : ["src/app/utils/*"],
-      "@modules/*" : ["src/app/modules/*"],
+      "@cars/*" : ["src/app/modules/cars/*"],
+      "@accounts/*" : ["src/app/modules/accounts/*"],
 
     },
     "resolveJsonModule": true,

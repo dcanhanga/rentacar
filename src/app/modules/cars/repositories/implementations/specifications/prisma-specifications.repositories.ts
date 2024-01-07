@@ -1,9 +1,7 @@
-import { type ISpecification } from '../../entities/Specification';
-import {
-  type ICreateSpecificationDTO,
-  type ISpecificationRepository
-} from '../interfaces/ISpecificationsRepository';
-import { prisma } from '@src/app/utils/prisma';
+import { type ISpecificationRepository } from '../../interfaces/ISpecificationsRepository';
+import { prisma } from '@app/utils/prisma';
+import { type ICreateSpecificationDTO } from '@cars/dtos';
+import { type ISpecification } from '@cars/entities';
 
 class PrismaSpecificationsRepository implements ISpecificationRepository {
   create = async ({ description, name }: ICreateSpecificationDTO): Promise<void> => {

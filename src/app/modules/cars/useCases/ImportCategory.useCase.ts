@@ -43,7 +43,7 @@ class ImportCategoryUseCase {
     const categories = await this.loadCategories(file);
     const categoriesAlreadyExists: IImportCategory[] = [];
 
-    const promises = categories.map(async category => {
+    for (const category of categories) {
       const { name, description } = category;
 
       const categoryAlreadyExists = await this.categoriesRepository.findByName(name);
@@ -53,11 +53,7 @@ class ImportCategoryUseCase {
       } else {
         categoriesAlreadyExists.push(category);
       }
-
-      return category;
-    });
-
-    await Promise.all(promises);
+    }
 
     return categoriesAlreadyExists;
   };

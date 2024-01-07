@@ -2,7 +2,7 @@ import { type Response, type Request } from 'express';
 import { container } from 'tsyringe';
 import { z } from 'zod';
 
-import { CreateSpecificationsUseCase } from '../../useCases/createSpecifications.useCase';
+import { CreateSpecificationsUseCase } from '@cars/useCases/createSpecifications.useCase';
 
 class CreateSpecificationsController {
   handle = async (request: Request, response: Response): Promise<Response> => {
