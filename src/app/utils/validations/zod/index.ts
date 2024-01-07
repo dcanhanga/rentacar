@@ -18,3 +18,8 @@ export const usersBodySchema = z.object({
   ),
   driver_license: z.string()
 });
+
+export const categoriesBodySchema = z.object({
+  name: z.string(),
+  description: z.string()
+});

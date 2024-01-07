@@ -2,6 +2,8 @@ import { inject, injectable } from 'tsyringe';
 
 import { ISpecificationRepository } from '../repositories/interfaces/ISpecificationsRepository';
 
+import { AppError } from '@/app/utils/errors/appError';
+
 interface IRequest {
   name: string;
   description: string;
@@ -14,13 +16,15 @@ class CreateSpecificationsUseCase {
     private readonly specificationsRepository: ISpecificationRepository
   ) {}
 
-  execute = async ({ description, name }: IRequest): Promise<string | undefined> => {
+  execute = async ({ description, name }: IRequest): Promise<undefined> => {
     const specificationAlreadyExits = await this.specificationsRepository.findByName(name);
-    if (specificationAlreadyExits) {
-      const { name } = specificationAlreadyExits;
-      return name;
+    if (!specificationAlreadyExits) {
+      await this.specificationsRepository.create({ name, description });
+      return;
     }
-    await this.specificationsRepository.create({ name, description });
+
+    const massage = `A especificação ${name} não foi cadastrada porque já existe no sistema`;
+    throw new AppError(massage, 409);
   };
 }
 
