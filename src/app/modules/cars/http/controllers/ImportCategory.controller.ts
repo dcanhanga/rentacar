@@ -19,7 +19,7 @@ class ImportCategoryController {
     const importResult = await importCategoryUseCase.execute(file);
     return response.status(200).json({
       message: 'Categorias cadastradas com sucesso.',
-      importResult
+      created: importResult.created
     });
   };
 }
